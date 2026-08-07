@@ -1,0 +1,8 @@
+/* =========================================================
+   RAXSA PORTAL v3.0 — THEME
+   Dark Mode Toggle & Utilities
+========================================================= */
+
+/* Theme toggle button icon swap handled by JS */
+#theme-toggle svg { transition: transform 0.3s ease; }
+#theme-toggle:hover svg { transform: rotate(15deg); }

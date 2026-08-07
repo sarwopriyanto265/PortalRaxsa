@@ -1,0 +1,92 @@
+/* =========================================================
+   RAXSA PORTAL v3.0 — AUTH PAGE
+   Login screen styles
+========================================================= */
+
+.login-page {
+  min-height: 100vh;
+  display: grid; place-items: center;
+  background: var(--raxsa-black);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(245, 184, 0, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(245, 184, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.login-card {
+  width: 100%; max-width: 420px;
+  background: var(--raxsa-black-soft);
+  border: 1px solid #333;
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.login-logo {
+  width: 64px; height: 64px;
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  display: grid; place-items: center;
+  color: var(--raxsa-black); font-weight: 800; font-size: 28px;
+  margin: 0 auto 24px;
+}
+
+.login-card h1 {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 700;
+  color: var(--raxsa-white);
+  margin-bottom: 8px;
+}
+
+.login-card > p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary);
+  color: var(--raxsa-black);
+  border-radius: var(--radius-md);
+  font-size: 15px; font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-login:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(245, 184, 0, 0.3);
+}
+
+.login-error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 14px;
+  display: none;
+}
+.login-error.show { display: block; }
+
+.login-hint {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.login-hint strong { color: var(--color-primary); }

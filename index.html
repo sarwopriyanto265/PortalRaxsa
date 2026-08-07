@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — RAXSA Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/auth.css">
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <script>
+    if (window.RaxsaAuth && window.RaxsaAuth.checkAuth()) {
+      window.location.href = 'pages/dashboard.html';
+    }
+  </script>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo">R</div>
+      <h1>RAXSA Portal</h1>
+      <p>Internal workspace untuk tim RAXSA Apparel</p>
+
+      <form id="login-form" autocomplete="off">
+        <p style="color:var(--color-text-muted);font-size:14px;margin-bottom:20px;line-height:1.6">
+          Akses portal ini dikontrol oleh sistem keamanan internal. Klik tombol di bawah untuk melanjutkan.
+        </p>
+        <button type="submit" class="btn-login">Masuk ke Portal</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (window.RaxsaAuth && window.RaxsaAuth.login()) {
+        window.location.href = 'pages/dashboard.html';
+      }
+    });
+  </script>
+</body>
+</html>

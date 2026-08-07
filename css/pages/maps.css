@@ -1,0 +1,261 @@
+/* =========================================================
+   RAXSA PORTAL v3.0 — MAPS PAGE
+========================================================= */
+
+.maps-layout {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - var(--header-height) - 48px);
+}
+
+.map-sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.map-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.location-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+/* ─── Search Box ─── */
+.map-search-wrap {
+  position: relative;
+}
+
+.map-search-input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: all var(--transition);
+}
+
+.map-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.map-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.map-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* ─── Search Suggestions Dropdown ─── */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  max-height: 280px;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-suggestions.show {
+  display: block;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background var(--transition);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+  background: var(--color-primary-light);
+}
+
+.suggestion-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.suggestion-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestion-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-address {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-type {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.suggestion-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ─── Map Legend ─── */
+.map-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ─── Location List Items ─── */
+.loc-item {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.loc-item:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.loc-item strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.loc-item span {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Leaflet popup custom ─── */
+.leaflet-popup-content-wrapper {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--color-border);
+}
+
+.leaflet-popup-tip {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .maps-layout {
+    flex-direction: column;
+    height: auto;
+  }
+  .map-sidebar {
+    width: 100%;
+    height: 400px;
+  }
+  .map-container {
+    height: 400px;
+  }
+}
+
+/* ─── Filter Buttons Active State ─── */
+.filter-btn {
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  color: var(--raxsa-black);
+  border-color: var(--color-primary);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(245, 184, 0, 0.3);
+}
+
+[data-theme="dark"] .filter-btn.active {
+  color: var(--raxsa-black);
+}
+
+.filter-btn:hover:not(.active) {
+  background: var(--color-bg);
+  border-color: var(--color-text-muted);
+}
